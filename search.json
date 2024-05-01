@@ -7,6 +7,13 @@
     "text": "About this blog"
   },
   {
+    "objectID": "posts/caitlin-clark-era/index.html",
+    "href": "posts/caitlin-clark-era/index.html",
+    "title": "How Has Caitlin Clark Impacted Iowa, and Could she Make an Impact at Indiana?",
+    "section": "",
+    "text": "TEXT\n\n\nCode\nlibrary(wehoop)\nlibrary(tidyverse)\nlibrary(waffle)\n\nseason23&lt;- c(\"Streaming\"= 11, \"Television\"=3, \"NA\"= 7)\nseason24&lt;- c(\"Streaming\"=15, \"Television\"=4, \"NA\"= 2)\n\niron(\n  waffle(season23,\n       rows=3,\n       title = \"Amount of games televised for the Indiana Fever during the 2023 season\",\n       xlab = \"1 square = 1 game\",\n       colors = c(\"#18ABF5\", \"#B1DEF5\", \"#183AF5\" ) ), \n  waffle(season24,\n       rows=3,\n       title = \"Amount of games televised for the Indiana Fever during the 2024 season\",\n       xlab = \"1 square = 1 game\",\n       colors = c(\"#18ABF5\",\"#B1DEF5\", \"#183AF5\") )\n)\n\n\n\n\n\n\n\n\n\nTEXT\n\n\nCode\nseason2023&lt;- espn_wnba_scoreboard(season = \"2023\")\n\nindiana&lt;- season2023 |&gt; \n  filter(home_team_name == \"Fever\")\n\nggplot() + \n  geom_hline(yintercept= 6645.883   , color=\"blue\") + \n  geom_line(data=indiana, aes(x=game_date, y=attendance, group= home_team_name)) + \n  facet_wrap(~home_team_name)\n\n\n\n\n\n\n\n\n\nTEXT\n\n\nCode\nncaa2&lt;- load_wbb_schedule()\niowa24&lt;- ncaa2 |&gt; filter(home_short_display_name ==\"Iowa\")\n\nbubble &lt;- ncaa2 |&gt; group_by(home_short_display_name)|&gt; \n  summarize(\n     SeasonAvgAttendance = mean(attendance), \n    AveragePointsFor = mean(home_score),\n    AveragePointsAgainst = mean(away_score)\n  ) \n\nIowaa&lt;- bubble |&gt; filter(home_short_display_name ==\"Iowa\")\n\nggplot() +\n  geom_point( \n    data=bubble,\n    aes(x=AveragePointsFor, y=AveragePointsAgainst, size=SeasonAvgAttendance),\n    color=\"grey\",\n    alpha=.5) +\n  geom_point( \n    data=Iowaa,\n    aes(x=AveragePointsFor, y=AveragePointsAgainst, size=SeasonAvgAttendance),\n    color=\"#FFCD00\") + scale_size(range=c(1,10), breaks=c(1000,5000, 8000, 12000))"
+  },
+  {
     "objectID": "posts/oklahoma-gymnastics-reign/index.html",
     "href": "posts/oklahoma-gymnastics-reign/index.html",
     "title": "Will Oklahoma’s Reign Over Division 1 Womens Gymnastics End?",
@@ -18,6 +25,6 @@
     "href": "index.html",
     "title": "Latest Posts",
     "section": "",
-    "text": "Will Oklahoma’s Reign Over Division 1 Womens Gymnastics End?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 13, 2024\n\n\nBella Maceranka\n\n\n\n\n\n\nNo matching items"
+    "text": "How Has Caitlin Clark Impacted Iowa, and Could she Make an Impact at Indiana?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2024\n\n\nBella Maceranka\n\n\n\n\n\n\n\n\n\n\n\n\nWill Oklahoma’s Reign Over Division 1 Womens Gymnastics End?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApr 13, 2024\n\n\nBella Maceranka\n\n\n\n\n\n\nNo matching items"
   }
 ]
