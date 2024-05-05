@@ -185,7 +185,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>TEXT</p>
+<p>Caitlin Clark has emerged as a transformative figure in basketball and women’s sports, leaving an enduring imprint on both the sport and her home state Iowa. As a standout player for the University of Iowa Hawkeyes women’s basketball team, her electrifying talent and fierce determination have captured the nation’s attention. With remarkable scoring prowess and unparalleled court vision, she has gained widespread acclaim, becoming one of the game’s most promising talents. Clark’s influence extends beyond her individual achievements, inspiring countless young athletes across the state and embodying the values of hard work, perseverance, and teamwork intrinsic to Iowa athletics. Her commitment to excellence on and off the court, coupled with her advocacy for important social issues, solidifies her legacy as a trailblazer.</p>
+<p>In the 2023 season, Caitlin Clark’s influence on the Iowa Hawkeyes was profound, but it was also a season of collective excellence. Under Clark’s leadership, the team showcased exceptional talent and cohesion, resulting in an impressive winning record. With a high-scoring point average and a stingy defense that allowed few points, the Hawkeyes dominated opponents, thrilling fans with their dynamic style of play. This dominance not only bolstered the team’s reputation but also contributed to the significant increase in attendance at games, as supporters flocked to witness their favorite team’s remarkable success firsthand. The teamwork between Clark and her teammates was very apparent, as they collectively elevated each others performance, forging a formidable force in collegiate basketball. As the season progressed, the Hawkeyes’ progress on the court continued to captivate audiences, solidifying their status as a powerhouse program and further cementing their place in the hearts of Iowa basketball fans.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -193,21 +194,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(waffle)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>season23<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Streaming"</span><span class="ot">=</span> <span class="dv">11</span>, <span class="st">"Television"</span><span class="ot">=</span><span class="dv">3</span>, <span class="st">"NA"</span><span class="ot">=</span> <span class="dv">7</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>season24<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Streaming"</span><span class="ot">=</span><span class="dv">15</span>, <span class="st">"Television"</span><span class="ot">=</span><span class="dv">4</span>, <span class="st">"NA"</span><span class="ot">=</span> <span class="dv">2</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">iron</span>(</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">waffle</span>(season23,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">rows=</span><span class="dv">3</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Amount of games televised for the Indiana Fever during the 2023 season"</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"1 square = 1 game"</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#18ABF5"</span>, <span class="st">"#B1DEF5"</span>, <span class="st">"#183AF5"</span> ) ), </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">waffle</span>(season24,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">rows=</span><span class="dv">3</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Amount of games televised for the Indiana Fever during the 2024 season"</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"1 square = 1 game"</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#18ABF5"</span>,<span class="st">"#B1DEF5"</span>, <span class="st">"#183AF5"</span>) )</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ncaa2<span class="ot">&lt;-</span> <span class="fu">load_wbb_schedule</span>()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>iowa24<span class="ot">&lt;-</span> ncaa2 <span class="sc">|&gt;</span> <span class="fu">filter</span>(home_short_display_name <span class="sc">==</span><span class="st">"Iowa"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>bubble <span class="ot">&lt;-</span> ncaa2 <span class="sc">|&gt;</span> <span class="fu">group_by</span>(home_short_display_name)<span class="sc">|&gt;</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">SeasonAvgAttendance =</span> <span class="fu">mean</span>(attendance), </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">AveragePointsFor =</span> <span class="fu">mean</span>(home_score),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">AveragePointsAgainst =</span> <span class="fu">mean</span>(away_score)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Iowaa<span class="ot">&lt;-</span> bubble <span class="sc">|&gt;</span> <span class="fu">filter</span>(home_short_display_name <span class="sc">==</span><span class="st">"Iowa"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>bubble,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>AveragePointsFor, <span class="at">y=</span>AveragePointsAgainst, <span class="at">size=</span>SeasonAvgAttendance),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"grey"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Iowaa,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>AveragePointsFor, <span class="at">y=</span>AveragePointsAgainst, <span class="at">size=</span>SeasonAvgAttendance),</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"#FFCD00"</span>) <span class="sc">+</span> <span class="fu">scale_size</span>(<span class="at">range=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">10</span>), <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1000</span>,<span class="dv">5000</span>, <span class="dv">8000</span>, <span class="dv">12000</span>)) <span class="sc">+</span> </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"Average Points Scored by Team"</span>, </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"Average Points Scored on Team"</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span> <span class="st">"Season Average Attendance"</span>, </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="st">"A Spectacular 2023 Season by Iowa"</span>, </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span><span class="st">"The Hawkeyes had an amazing season that brought them all the way to the National Championship</span><span class="sc">\n</span><span class="st">game. They were doing so well everyone wanted to go see them play, leaving them with the highest</span><span class="sc">\n</span><span class="st">season average attendance in Women's College Basketball for the season. "</span>, </span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption=</span><span class="st">"Source: WeHoop | By Bella Maceranka"</span>) <span class="sc">+</span> </span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>), </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -217,19 +240,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>TEXT</p>
+<p>Caitlin Clark’s selection as the first pick by the Indiana Fever in the 2024 WNBA draft marks a monumental moment for both her career and the league as a whole. The anticipation surrounding her transition to the professional ranks has been huge, with fans eagerly awaiting her debut on the WNBA stage. As Clark joins the Fever, her arrival is already making waves, shown by the giant surge in demand for her jersey, which sold out very quickly on the night she was drafted. This unprecedented interest reflects not only the excitement surrounding Clark’s entry into the WNBA but also the broader impact she’s poised to have on the league.</p>
+<p>The increased number of televised games for the Fever this year suggests a growing recognition of the team’s potential to draw in viewers, with Clark’s presence likely playing a significant role in attracting heightened media attention. This expanded coverage not only provides fans with more opportunities to witness Clark’s electrifying talent but also highlights the rising prominence of the Fever and the WNBA as a whole. As anticipation builds for Clark’s debut, the feverish excitement surrounding her entry into the league underscores the transformative impact she’s already making on women’s basketball, both on and off the court.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>season2023<span class="ot">&lt;-</span> <span class="fu">espn_wnba_scoreboard</span>(<span class="at">season =</span> <span class="st">"2023"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>indiana<span class="ot">&lt;-</span> season2023 <span class="sc">|&gt;</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(home_team_name <span class="sc">==</span> <span class="st">"Fever"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span> <span class="fl">6645.883</span>   , <span class="at">color=</span><span class="st">"blue"</span>) <span class="sc">+</span> </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>indiana, <span class="fu">aes</span>(<span class="at">x=</span>game_date, <span class="at">y=</span>attendance, <span class="at">group=</span> home_team_name)) <span class="sc">+</span> </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>home_team_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>season23<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Streaming"</span><span class="ot">=</span> <span class="dv">11</span>, <span class="st">"Television"</span><span class="ot">=</span><span class="dv">3</span>, <span class="st">"Not Televised"</span><span class="ot">=</span> <span class="dv">7</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>season24<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Streaming"</span><span class="ot">=</span><span class="dv">15</span>, <span class="st">"Television"</span><span class="ot">=</span><span class="dv">4</span>, <span class="st">"Not Televised"</span><span class="ot">=</span> <span class="dv">2</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">iron</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">waffle</span>(season23,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">rows=</span><span class="dv">3</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Amount of games televised for the Indiana Fever during the 2023 season"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"2023 Season"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#18ABF5"</span>, <span class="st">"#B1DEF5"</span>, <span class="st">"#183AF5"</span> ) )<span class="sc">+</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">title=</span><span class="st">"A Huge Difference in the Amount of Games</span><span class="sc">\n</span><span class="st">Shown for the Indiana Fever Between the 2023</span><span class="sc">\n</span><span class="st">and 2024 seasons"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">"In 2023 Caitlin Clark was not on the team, in 2024 she was the first round</span><span class="sc">\n</span><span class="st">draft pick for the Fever. Is that why there are so many more games being</span><span class="sc">\n</span><span class="st">shows,or are women's sports finally getting more recognition?"</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span><span class="st">"bold"</span>),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    , </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">waffle</span>(season24,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">rows=</span><span class="dv">3</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"2024 Season</span><span class="sc">\n</span><span class="st">1 square = 1 game"</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#18ABF5"</span>,<span class="st">"#B1DEF5"</span>, <span class="st">"#183AF5"</span>) ) <span class="sc">+</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Source: WeHoop | Graphic by Bella Maceranka"</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -239,32 +279,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>TEXT</p>
+<p>In addition to their on-court struggles, the Indiana Fever faced significant challenges in attracting fans to their games during the 2023 season. With consistently low attendance numbers, the team grappled with filling seats and engaging their fan base throughout the season. The lack of support from spectators not only affected the team’s morale but also created a palpable sense of disconnect between the Fever and their community. Despite their efforts to compete at a high level, the empty seats in the arena served as a stark reminder of the uphill battle the Fever faced in cultivating a passionate and dedicated fan following. As they look towards the future, addressing the issue of attendance looms large as a critical priority for the Fever organization, as they strive to rebuild and re-energize their fan base for seasons to come.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ncaa2<span class="ot">&lt;-</span> <span class="fu">load_wbb_schedule</span>()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>iowa24<span class="ot">&lt;-</span> ncaa2 <span class="sc">|&gt;</span> <span class="fu">filter</span>(home_short_display_name <span class="sc">==</span><span class="st">"Iowa"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>bubble <span class="ot">&lt;-</span> ncaa2 <span class="sc">|&gt;</span> <span class="fu">group_by</span>(home_short_display_name)<span class="sc">|&gt;</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">SeasonAvgAttendance =</span> <span class="fu">mean</span>(attendance), </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">AveragePointsFor =</span> <span class="fu">mean</span>(home_score),</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">AveragePointsAgainst =</span> <span class="fu">mean</span>(away_score)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>Iowaa<span class="ot">&lt;-</span> bubble <span class="sc">|&gt;</span> <span class="fu">filter</span>(home_short_display_name <span class="sc">==</span><span class="st">"Iowa"</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>( </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>bubble,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>AveragePointsFor, <span class="at">y=</span>AveragePointsAgainst, <span class="at">size=</span>SeasonAvgAttendance),</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"grey"</span>,</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>( </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Iowaa,</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>AveragePointsFor, <span class="at">y=</span>AveragePointsAgainst, <span class="at">size=</span>SeasonAvgAttendance),</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"#FFCD00"</span>) <span class="sc">+</span> <span class="fu">scale_size</span>(<span class="at">range=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">10</span>), <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1000</span>,<span class="dv">5000</span>, <span class="dv">8000</span>, <span class="dv">12000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>season2023<span class="ot">&lt;-</span> <span class="fu">espn_wnba_scoreboard</span>(<span class="at">season =</span> <span class="st">"2023"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>indiana<span class="ot">&lt;-</span> season2023 <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(home_team_name <span class="sc">==</span> <span class="st">"Fever"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span> <span class="fl">6645.883</span>   , <span class="at">color=</span><span class="st">"blue"</span>) <span class="sc">+</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>indiana, <span class="fu">aes</span>(<span class="at">x=</span>game_date, <span class="at">y=</span>attendance)) <span class="sc">+</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>home_team_name) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"Game"</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"Attendance"</span>, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="st">"Indiana's Below Average Attendance"</span>, </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span><span class="st">"The Fever are one of the worst teams in the league, which has led to them having poor</span><span class="sc">\n</span><span class="st">attendance at their games. The league average for attendance is 6,645, The Fever had only</span><span class="sc">\n</span><span class="st">1 game above the averahe during the 2023 season, with most games being far below average."</span>, </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption=</span><span class="st">"Source: WeHoop | By Bella Maceranka"</span>) <span class="sc">+</span> </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>), </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -274,6 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>However, amidst the challenges of the previous season, there’s a glimmer of hope for the Indiana Fever. With the anticipation surrounding Caitlin Clark’s arrival, there’s been a noticeable shift in the atmosphere surrounding the team. The Fever’s first home game of the season has already sold out, indicating a resurgence in fan interest and support. Ticket prices are soaring as fans want to witness Clark’s debut in person, signaling a newfound excitement and optimism for the team’s future. Even before stepping onto the court, Clark’s presence has given a renewed sense of energy and enthusiasm into the Fever organization. Her arrival not only brings immense talent but also serves as a catalyst for positive change, igniting a spark of hope and anticipation for a brighter season ahead. As anticipation builds for her inaugural season, Clark’s influence is poised to extend beyond the court, reshaping the landscape of women’s basketball and captivating audiences nationwide. With her unparalleled talent, charisma, and unwavering dedication, Clark has the potential to not only elevate the Fever to new heights but also inspire a new generation of fans and players, leaving a mark on the WNBA for years to come. As the season unfolds, all eyes will be on Caitlin Clark as she continues to write her own legacy in women’s basketball history.</p>
 
 
 
